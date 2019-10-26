@@ -22,3 +22,13 @@
   (testing "rank-choices"
     (is (= ["c1" "c2" "c3"]
           (rank-choices {"c2" 1.0, "c3" 0.5, "c1" 1.5})))))
+
+(deftest test-integrated
+  (testing "person to choices"
+    (is (= ["c2" "c3" "c1"]
+          (->> [
+                ["p1" 1.0 ["c1" "c2"]]
+                ["p2" 1.5 ["c2" "c3"]]]
+            (map person-to-scores)
+            tally
+            rank-choices)))))
