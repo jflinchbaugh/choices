@@ -25,7 +25,6 @@
   "[[y z] x] -> [{y x} {z x}]"
   [lst]
   (->> lst
-    (map (juxt last first))
     (reduce
       (fn [m [k v]] (apply conj m (for [kk k] {kk [v]})))
       []))
@@ -36,6 +35,7 @@
   [people]
   (->>
     people
+    (map (juxt last first))
     distribute-keys
     (apply merge-with concat)
     ))
