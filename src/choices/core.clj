@@ -21,12 +21,14 @@
     reverse
     (map first)))
 
-(defn pivot
-  "flip a map to lists into a list of maps: [x [y z]] -> [{y x} {z x}]"
+(defn distribute-keys
+  "[[y z] x] -> [{y x} {z x}]"
   [lst]
-  (reduce
-    (fn [m [k v]] (apply conj m (for [kk k] {kk [v]})))
-    [] lst)
+  (->> lst
+    (map (juxt last first))
+    (reduce
+      (fn [m [k v]] (apply conj m (for [kk k] {kk [v]})))
+      []))
   )
 
 (defn choices-to-people
@@ -34,7 +36,6 @@
   [people]
   (->>
     people
-    (map (juxt last first))
-    pivot
+    distribute-keys
     (apply merge-with concat)
     ))

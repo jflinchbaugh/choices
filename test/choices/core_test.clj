@@ -33,6 +33,12 @@
           [["p1" 1.0 ["c1" "c2"]]
            ["p2" 1.5 ["c2" "c3"]]])))))
 
+(deftest test-distribute-keys
+  (testing "distribute a list of keys into a map"
+    (is (=
+          [{"c1" ["p1"]} {"c2" ["p1"]} {"c1" ["p2"]}]
+          (distribute-keys [["p1" ["c1" "c2"]] ["p2" ["c1"]]])))))
+
 (deftest test-integrated
   (testing "person to ranked choices"
     (is (=
