@@ -24,10 +24,10 @@
 (defn distribute-keys
   "[[y z] x] -> [{y x} {z x}]"
   [lst]
-  (->> lst
-    (reduce
-      (fn [m [k v]] (apply conj m (for [kk k] {kk [v]})))
-      []))
+  (reduce
+    (fn [m [k v]] (apply conj m (for [kk k] {kk [v]})))
+    []
+    lst)
   )
 
 (defn choices-to-people
