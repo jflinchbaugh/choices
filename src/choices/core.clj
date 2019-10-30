@@ -25,7 +25,7 @@
   "[[y z] x] -> [{y x} {z x}]"
   [lst]
   (reduce
-    (fn [m [k v]] (apply conj m (for [kk k] {kk [v]})))
+    (fn [m [k v]] (apply conj m (for [kk k] {kk #{v}})))
     []
     lst)
   )
@@ -37,5 +37,16 @@
     people
     (map (juxt last first))
     distribute-keys
-    (apply merge-with concat)
+    (apply merge-with (comp set concat))
     ))
+
+(defn rank-choices-with-people
+  "transform list of people and choices to ranked choices and people"
+  [people]
+  (let [ranked-choices (->>
+                         people
+                         (map person-to-scores)
+                         tally
+                         rank-choices)
+        choices-people (choices-to-people people)]
+    (map (juxt identity choices-people) ranked-choices)))

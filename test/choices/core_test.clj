@@ -28,7 +28,7 @@
 (deftest test-choices-to-people
   (testing "choices to people"
     (is (=
-         {"c1" ["p1"], "c2" ["p1" "p2"], "c3" ["p2"]}
+          {"c1" #{"p1"}, "c2" #{"p1" "p2"}, "c3" #{"p2"}}
          (choices-to-people
           [["p1" 1.0 ["c1" "c2"]]
            ["p2" 1.5 ["c2" "c3"]]])))))
@@ -36,15 +36,15 @@
 (deftest test-distribute-keys
   (testing "distribute a list of keys into a map"
     (is (=
-          [{"c1" ["p1"]} {"c2" ["p1"]} {"c1" ["p2"]}]
-          (distribute-keys [[["c1" "c2"] "p1"] [["c1"] "p2"]])))))
+          [{"c1" #{"p1"}} {"c2" #{"p1"}} {"c1" #{"p2"}}]
+         (distribute-keys [[["c1" "c2"] "p1"] [["c1"] "p2"]])))))
 
-(deftest test-integrated
-  (testing "person to ranked choices"
+(deftest test-rank-choices-with-peoople
+  (testing "transform people w/ choices to ranked choices w/ people"
     (is (=
-         ["c2" "c3" "c1"]
-         (->> [["p1" 1.0 ["c1" "c2"]]
-               ["p2" 1.5 ["c2" "c3"]]]
-              (map person-to-scores)
-              tally
-              rank-choices)))))
+         [["c2" #{"p1" "p2"}]
+          ["c3" #{"p2"}]
+          ["c1" #{"p1"}]]
+         (rank-choices-with-people
+          [["p1" 1.0 ["c1" "c2"]]
+           ["p2" 1.5 ["c2" "c3"]]])))))
