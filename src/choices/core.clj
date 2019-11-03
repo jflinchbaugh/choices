@@ -1,6 +1,11 @@
 (ns choices.core
 (:require [clojure.set :as set]))
 
+(defn handler [request]
+  {:status 200
+   :headers {"Content-type" "text/plain"}
+   :body "Hello world."})
+
 (defn person-to-scores
   "given a preson structure, produce their scores per choice"
   [[name score choices]]
