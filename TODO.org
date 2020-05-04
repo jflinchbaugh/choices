@@ -1,0 +1,14 @@
+* As the organizer
+** I want to group choices into a "decision", so I can have multiple decision sessions running at once.
+** I want to define a list of potential choices to be sent to all participants, so they can score the choices.
+** I want to define a list of email addresses, so they can be notified and provided access to the list o choices.
+** I want to assign weights to participants, so certain participants choices can be considered more important than others.
+** I want to notify participants that choices are available, so they can weight the choices.
+** I want to calculate the best choice based on scores provided by participants.
+** I want to close participants' access to make choices, so old votes don't clutter their view.
+** I want to re-invite a participant by email with a new access token, so an old access token can be disabled.
+* As a participant
+** I want to click my participant link, so I can see my list of choices.
+** I want to assign weights to each choice, so the organizer can calculate my likelihood of participating given that choice.
+** I want to revisit my choices and make changes.
+** I want to see a list of all decisions that are open for me to weight.
