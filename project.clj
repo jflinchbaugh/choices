@@ -11,7 +11,7 @@
                  [com.cognitect/transit-clj "1.0.324"]
                  [com.h2database/h2 "1.4.200"]
                  [com.walmartlabs/lacinia "0.36.0"]
-                 [conman "0.8.6"]
+                 [conman "0.8.8"]
                  [cprop "0.1.16"]
                  [expound "0.8.4"]
                  [funcool/struct "1.4.0"]
@@ -26,16 +26,16 @@
                  [mount "0.1.16"]
                  [nrepl "0.7.0"]
                  [org.clojure/clojure "1.10.1"]
-                 [org.clojure/clojurescript "1.10.597" :scope "provided"]
+                 [org.clojure/clojurescript "1.10.758" :scope "provided"]
                  [org.clojure/data.json "1.0.0"]
                  [org.clojure/tools.cli "1.0.194"]
-                 [org.clojure/tools.logging "1.0.0"]
+                 [org.clojure/tools.logging "1.1.0"]
                  [org.webjars.npm/bulma "0.8.2"]
                  [org.webjars.npm/material-icons "0.3.1"]
-                 [org.webjars/webjars-locator "0.39"]
+                 [org.webjars/webjars-locator "0.40"]
                  [reagent "0.10.0"]
                  [ring-webjars "0.2.0"]
-                 [ring/ring-core "1.8.0"]
+                 [ring/ring-core "1.8.1"]
                  [ring/ring-defaults "0.3.2"]
                  [selmer "1.12.23"]]
 
@@ -63,8 +63,6 @@
    :nrepl-port 7002
    :css-dirs ["resources/public/css"]
    :nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
-  
-
   :profiles
   {:uberjar {:omit-source true
              :prep-tasks ["compile" ["cljsbuild" "once" "min"]]
@@ -81,7 +79,6 @@
                  :closure-warnings
                  {:externs-validation :off :non-standard-jsdoc :off}
                  :externs ["react/externs/react.js"]}}}}
-             
              :aot :all
              :uberjar-name "choices.jar"
              :source-paths ["env/prod/clj" ]
@@ -101,7 +98,7 @@
                                  [org.seleniumhq.selenium/selenium-server "2.48.2"]
                                  [pjstadig/humane-test-output "0.10.0"]
                                  [prone "2020-01-17"]
-                                 [ring/ring-devel "1.8.0"]
+                                 [ring/ring-devel "1.8.1"]
                                  [ring/ring-mock "0.4.0"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]
                                  [jonase/eastwood "0.3.5"]
